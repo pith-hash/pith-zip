@@ -4,7 +4,7 @@
 
 - Repo: `pith-hash/pith-zip`
 - Description: ZIP container reading: stored and deflated entries, plus a minimal XML reader
-- License: Apache-2.0
+- License: MIT
 
 ## Build & Test
 

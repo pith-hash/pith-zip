@@ -5,7 +5,7 @@ edition = "2024"
 rust-version = "1.85"
 description = "ZIP container reading: stored and deflated entries, plus a minimal XML reader"
 readme = "README.md"
-license = "Apache-2.0"
+license = "MIT"
 
 [dependencies]
 pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
