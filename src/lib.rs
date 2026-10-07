@@ -37,8 +37,16 @@
 //! Anything not needed (DTD internals beyond a skipped `<!DOCTYPE>`,
 //! namespace resolution, schema) is skipped or refused.
 
+// `unsafe` is denied everywhere except `ffi`, the C ABI surface the
+// language SDKs bind through: raw pointers exist only at that boundary,
+// and every exported function is a documented `unsafe extern "C"` fn.
+#![deny(unsafe_code)]
+
 mod reader;
 mod xml;
+
+pub mod ffi;
+pub mod reference;
 
 pub use reader::{ZipArchive, ZipEntry};
 pub use xml::{XmlEvent, XmlReader};

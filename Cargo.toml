@@ -7,14 +7,25 @@ description = "ZIP container reading: stored and deflated entries, plus a minima
 readme = "README.md"
 license = "MIT"
 
+[lib]
+# The cdylib is the binary every language SDK binds through (ctypes,
+# koffi, cgo); the rlib keeps the Rust consumers unchanged.
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
 pith-inflate = { git = "https://github.com/pith-hash/pith-inflate.git", branch = "main" }
 
-[lints.rust]
-unsafe_code = "forbid"
-missing_docs = "deny"
-
+# Vector generator: regenerates reference.json (CI verifies it is current,
+# CD ships it with the SDK artifacts).
 [[bin]]
 name = "gen-reference"
 path = "tools/gen-reference/main.rs"
+
+# `unsafe_code` is denied at the crate root (`#![deny(unsafe_code)]` in
+# src/lib.rs), with the single `#![allow(unsafe_code)]` confined to
+# src/ffi.rs, the C ABI surface. It cannot live here: `[lints]` entries
+# become command-line flags, and command-line lints cannot be
+# re-allowed by inner attributes.
+[lints.rust]
+missing_docs = "deny"
