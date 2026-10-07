@@ -1,0 +1,20 @@
+[package]
+name = "pith-zip"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "ZIP container reading: stored and deflated entries, plus a minimal XML reader"
+readme = "README.md"
+license = "Apache-2.0"
+
+[dependencies]
+pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
+pith-inflate = { git = "https://github.com/pith-hash/pith-inflate.git", branch = "main" }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "deny"
+
+[[bin]]
+name = "gen-reference"
+path = "tools/gen-reference/main.rs"

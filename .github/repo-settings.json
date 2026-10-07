@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "tier": 1,
+  "description": "ZIP container reading: stored and deflated entries, plus a minimal XML reader",
+  "homepage": "https://pith-zip.n24q02m.com",
+  "topics": [
+    "rust",
+    "zero-dependency",
+    "parsers"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "crate": "pith-zip",
+  "description": "hex-exact ZIP archive reference vectors: every tests/fixtures/*.zip archive parsed by pith-zip, each member checked against its corpus entry and pinned by CRC-32 and SHA-256 content digests",
+  "vectors": [
+    {
+      "name": "stored.zip",
+      "why": "two stored (method 0) members: short literal text and a 3 000-byte pattern",
+      "members": 2,
+      "entries": [
+        {
+          "name": "a.txt",
+          "method": 0,
+          "compressed_size": 37,
+          "uncompressed_size": 37,
+          "crc32": "96ae5226",
+          "sha256": "cc5c3e4b5573ae6a9899b198e06fe39fe7419f3e1a0d41f22ab877ff485c10a4",
+          "data_descriptor": false
+        },
+        {
+          "name": "b.bin",
+          "method": 0,
+          "compressed_size": 3000,
+          "uncompressed_size": 3000,
+          "crc32": "4636a985",
+          "sha256": "e8ca4bf83f56152c01649f88bd7c91b15ae8137d9a709572e04fae55894ea75e",
+          "data_descriptor": false
+        }
+      ]
+    },
+    {
+      "name": "deflated.zip",
+      "why": "deflated (method 8) members: one small, one spanning two stored DEFLATE blocks",
+      "members": 2,
+      "entries": [
+        {
+          "name": "s.txt",
+          "method": 8,
+          "compressed_size": 60,
+          "uncompressed_size": 55,
+          "crc32": "7642aab6",
+          "sha256": "1cb5f9f8368b3f38db20b57782351ee13a60826b21ff7ca5b9a7c163c8f0f75b",
+          "data_descriptor": false
+        },
+        {
+          "name": "big.bin",
+          "method": 8,
+          "compressed_size": 70010,
+          "uncompressed_size": 70000,
+          "crc32": "db4d7c70",
+          "sha256": "affdcf413a31cd9a0b7c42f5db8e48a000eb55358f01ceee6769d2d2f856297b",
+          "data_descriptor": false
+        }
+      ]
+    },
+    {
+      "name": "descriptor.zip",
+      "why": "flags-bit-3 members whose CRC and sizes trail the payload, with and without the optional 0x08074b50 signature",
+      "members": 2,
+      "entries": [
+        {
+          "name": "d1.bin",
+          "method": 8,
+          "compressed_size": 55,
+          "uncompressed_size": 50,
+          "crc32": "1cf24857",
+          "sha256": "f0cfd9d9b660a3e9e681bc8d1f152feee168a65655604dda28e6200a228abfc2",
+          "data_descriptor": true
+        },
+        {
+          "name": "d2.bin",
+          "method": 8,
+          "compressed_size": 57,
+          "uncompressed_size": 52,
+          "crc32": "0fe9a563",
+          "sha256": "039b95d79cdf0b647112e6376e473fa12ce62d57a70171a9c9e76494e064f804",
+          "data_descriptor": true
+        }
+      ]
+    },
+    {
+      "name": "mixed.zip",
+      "why": "stored, deflated and descriptor-backed members in one directory",
+      "members": 3,
+      "entries": [
+        {
+          "name": "m0.txt",
+          "method": 0,
+          "compressed_size": 33,
+          "uncompressed_size": 33,
+          "crc32": "6b556ff0",
+          "sha256": "06655389766186e13cc198d87e908c009e6689a0faeb57e607adb53a730ef95a",
+          "data_descriptor": false
+        },
+        {
+          "name": "m1.bin",
+          "method": 8,
+          "compressed_size": 1505,
+          "uncompressed_size": 1500,
+          "crc32": "6fc63e71",
+          "sha256": "ca95ef2889cf478de80b3d8ee73a8b5652c6bad7ff992766daf1d90accc3a587",
+          "data_descriptor": false
+        },
+        {
+          "name": "m2.bin",
+          "method": 8,
+          "compressed_size": 57,
+          "uncompressed_size": 52,
+          "crc32": "ec78de09",
+          "sha256": "e3c5f9a9616f5f7c43290647dfdc740a698cbda82ecfe3e9402428485b562124",
+          "data_descriptor": true
+        }
+      ]
+    },
+    {
+      "name": "comment.zip",
+      "why": "a 100-byte EOCD comment containing a PK\\x05\\x06 lookalike the scanner must skip",
+      "members": 1,
+      "entries": [
+        {
+          "name": "a.txt",
+          "method": 0,
+          "compressed_size": 12,
+          "uncompressed_size": 12,
+          "crc32": "e8e9efb3",
+          "sha256": "0d82b0834da02327c9c25b401e6dcc392b52e23d78442df47cb24084a0c1ad2e",
+          "data_descriptor": false
+        }
+      ]
+    },
+    {
+      "name": "empty.zip",
+      "why": "an archive with no members at all",
+      "members": 0,
+      "entries": [
+      ]
+    }
+  ]
+}
