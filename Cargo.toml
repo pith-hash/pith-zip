@@ -13,8 +13,8 @@ license = "MIT"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
-pith-inflate = { git = "https://github.com/pith-hash/pith-inflate.git", branch = "main" }
+pith-digest = { version = "0.1", git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
+pith-inflate = { version = "0.1", git = "https://github.com/pith-hash/pith-inflate.git", branch = "main" }
 
 # Vector generator: regenerates reference.json (CI verifies it is current,
 # CD ships it with the SDK artifacts).
