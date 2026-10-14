@@ -1,6 +1,6 @@
 [package]
 name = "pith-zip"
-version = "0.1.1-beta.1"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.85"
 description = "ZIP container reading: stored and deflated entries, plus a minimal XML reader"
