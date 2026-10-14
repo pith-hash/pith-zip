@@ -1,6 +1,6 @@
 {
   "name": "@pith-hash/pith-zip",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.1",
   "description": "ZIP archive reading SDK: stored and deflated members, data descriptors and CRC verification via the pith-zip Rust cdylib (koffi, prebuilt)",
   "license": "MIT",
   "main": "index.js",
